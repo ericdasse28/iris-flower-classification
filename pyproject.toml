@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "iris-flower-classification"
+version = "0.1.0"
+description = "Iris Flower Classification"
+authors = ["Eric Dasse <christ.gououi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.2"
+scikit-learn = "^1.5.1"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.1"
+black = "^24.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
