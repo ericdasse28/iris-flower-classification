@@ -1,8 +1,17 @@
 """Evaluation phase of the model training."""
 
+from pathlib import Path
+
+import joblib
 import pandas as pd
 from dvclive import Live
 from sklearn.metrics import accuracy_score, precision_score, recall_score
+
+
+def load_model(model_path: Path):
+    """Load model."""
+
+    return joblib.load(model_path)
 
 
 def evaluate(y_test: pd.Series, y_pred: pd.Series) -> dict:
