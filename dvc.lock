@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: poetry run prepare -r data/iris.csv -p data/prepared
+    deps:
+    - path: data/iris.csv
+      hash: md5
+      md5: 2c53a0cfddf0e0dbc6b138912da02ec6
+      size: 4607
+    - path: iris_flower_classification/prepare.py
+      hash: md5
+      md5: 9a1c5b344dbd04ed2fa8093d80668801
+      size: 1066
+    outs:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 541041e3a41b95d5548b3782e5d93757
+      size: 677
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: 4ef88f771e141bab2a60051b83935ec9
+      size: 2587
+  train:
+    cmd: poetry run train --dataset-path data/prepared/train.csv --model-path model.pkl
+    deps:
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: 4ef88f771e141bab2a60051b83935ec9
+      size: 2587
+    - path: iris_flower_classification/train.py
+      hash: md5
+      md5: f06f3d8c9a43ba6e74a9e9ba093c8066
+      size: 775
+    outs:
+    - path: model.pkl
+      hash: md5
+      md5: 4f2ba77888d955c7d002d4f8ebefd641
+      size: 1023
