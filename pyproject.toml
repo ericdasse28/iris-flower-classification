@@ -6,6 +6,9 @@ authors = ["Eric Dasse <christ.gououi@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
+[tool.poetry.scripts]
+evaluate = "iris_flower_classification.evaluate:main"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 pandas = "^2.2.2"
