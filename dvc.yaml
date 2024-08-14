@@ -19,8 +19,8 @@ stages:
     deps:
     - data/prepared/test.csv
     - iris_flower_classification/evaluate.py
-    metrics:
-    - dvclive/metrics.json
+    outs:
+    - dvclive
 metrics:
 - dvclive/metrics.json
 plots:
