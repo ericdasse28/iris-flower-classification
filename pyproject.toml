@@ -7,6 +7,8 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.scripts]
+prepare = "iris_flower_classification.prepare:main"
+train = "iris_flower_classification.train:main"
 evaluate = "iris_flower_classification.evaluate:main"
 
 [tool.poetry.dependencies]
