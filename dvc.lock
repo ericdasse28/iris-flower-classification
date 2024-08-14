@@ -36,3 +36,19 @@ stages:
       hash: md5
       md5: 4f2ba77888d955c7d002d4f8ebefd641
       size: 1023
+  evaluate:
+    cmd: poetry run evaluate --model-path model.pkl --dataset-path data/prepared/test.csv
+    deps:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 541041e3a41b95d5548b3782e5d93757
+      size: 677
+    - path: iris_flower_classification/evaluate.py
+      hash: md5
+      md5: e428837edb4c16540a68fc085d170391
+      size: 1326
+    outs:
+    - path: dvclive/metrics.json
+      hash: md5
+      md5: b319df8e004dd8e324fad42c1b85ff5d
+      size: 172

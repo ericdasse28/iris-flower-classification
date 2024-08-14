@@ -21,3 +21,8 @@ stages:
     - iris_flower_classification/evaluate.py
     metrics:
     - dvclive/metrics.json
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step
