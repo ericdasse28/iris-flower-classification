@@ -1,0 +1,9 @@
+stages:
+  prepare:
+    cmd: poetry run prepare -r data/iris.csv -p data/prepared
+    deps:
+    - data/iris.csv
+    - iris_flower_classification/prepare.py
+    outs:
+    - data/prepared/test.csv
+    - data/prepared/train.csv
