@@ -45,7 +45,7 @@ def main():
     model = load_model(model_path)
     X_test, y_test = load_data(dataset_path)
 
-    y_pred = model.fit(X_test)
+    y_pred = model.predict(X_test)
 
     metrics = evaluate(y_test, y_pred)
 
