@@ -5,9 +5,9 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
-from dvclive import Live
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
+from dvclive import Live
 from iris_flower_classification.data import load_data
 
 
@@ -51,4 +51,4 @@ def main():
 
     with Live(resume=True) as live:
         for metric in metrics:
-            live.log_metric(f"test/{metric}", metric)
+            live.log_metric(f"test/{metric}", metrics[metric])
