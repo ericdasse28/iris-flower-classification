@@ -1,6 +1,7 @@
 """Evaluation phase of the model training."""
 
 import pandas as pd
+from dvclive import Live
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 
@@ -16,3 +17,16 @@ def evaluate(y_test: pd.Series, y_pred: pd.Series) -> dict:
         ),
         "macro_avg_recall": recall_score(y_test, y_pred, average="macro"),
     }
+
+
+def main():
+    model = load_model(model_path)
+    X_test, y_test = load_data(dataset_path)
+
+    y_pred = model.fit(X_test)
+
+    metrics = evaluate(y_test, y_pred)
+
+    with Live(resume=True) as live:
+        for metric in metrics:
+            live.log_metric(f"test/{metric}", metric)
