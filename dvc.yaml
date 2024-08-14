@@ -14,3 +14,10 @@ stages:
     - iris_flower_classification/train.py
     outs:
     - model.pkl
+  evaluate:
+    cmd: poetry run evaluate --model-path model.pkl --dataset-path data/prepared/test.csv
+    deps:
+    - data/prepared/test.csv
+    - iris_flower_classification/evaluate.py
+    metrics:
+    - dvclive/metrics.json
