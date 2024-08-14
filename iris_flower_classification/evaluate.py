@@ -1,5 +1,6 @@
 """Evaluation phase of the model training."""
 
+import argparse
 from pathlib import Path
 
 import joblib
@@ -36,7 +37,17 @@ def evaluate(y_test: pd.Series, y_pred: pd.Series) -> dict:
     }
 
 
+def _get_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model-path")
+    parser.add_argument("--dataset-path")
+    args = parser.parse_args()
+
+    return args.model_path, args.dataset_path
+
+
 def main():
+    model_path, dataset_path = _get_arguments()
     model = load_model(model_path)
     X_test, y_test = load_data(dataset_path)
 
