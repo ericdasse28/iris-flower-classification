@@ -68,10 +68,10 @@ stages:
       size: 596
     - path: iris_flower_classification/plot.py
       hash: md5
-      md5: d35df9e66d43b30b4efa2c49b3ea1203
-      size: 754
+      md5: 60a1e26481d5b31f5d6e8d1701fbaacd
+      size: 771
     outs:
     - path: plots/labelling_scatter_plot.png
       hash: md5
-      md5: 2763d56a641c90cb208e89fe9a5059f6
-      size: 16564
+      md5: fc47592d1e772aafc88b5a7c92c6d7e5
+      size: 16789
