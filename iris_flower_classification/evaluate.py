@@ -17,7 +17,7 @@ def load_model(model_path: Path):
     return joblib.load(model_path)
 
 
-def evaluate(y_test: pd.Series, y_pred: pd.Series) -> dict:
+def compute_evaluation_metrics(y_test: pd.Series, y_pred: pd.Series) -> dict:
     """Evaluate classification and returns metrics."""
 
     return {
@@ -40,6 +40,11 @@ def _get_arguments():
     return args.model_path, args.dataset_path
 
 
+# def compute_evaluation_metrics(model, X, y):
+#     y_pred = model.predict(X)
+#     metrics
+
+
 def main():
     model_path, dataset_path = _get_arguments()
     model = load_model(model_path)
@@ -47,7 +52,7 @@ def main():
 
     y_pred = model.predict(X_test)
 
-    metrics = evaluate(y_test, y_pred)
+    metrics = compute_evaluation_metrics(y_test, y_pred)
 
     with Live(resume=True) as live:
         for metric in metrics:

@@ -2,7 +2,7 @@ from math import isclose
 
 import pandas as pd
 
-from iris_flower_classification.evaluate import evaluate
+from iris_flower_classification.evaluate import compute_evaluation_metrics
 
 
 def test_evaluate_function_metrics():
@@ -14,7 +14,7 @@ def test_evaluate_function_metrics():
     y_test = pd.Series([0, 1, 1, 2, 0, 0])
     y_pred = pd.Series([1, 1, 0, 2, 0, 0])
 
-    actual_metrics = evaluate(y_test, y_pred)
+    actual_metrics = compute_evaluation_metrics(y_test, y_pred)
 
     expected_metrics = {
         "accuracy": 0.66,
