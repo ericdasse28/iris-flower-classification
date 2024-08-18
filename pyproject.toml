@@ -10,6 +10,7 @@ readme = "README.md"
 prepare = "iris_flower_classification.prepare:main"
 train = "iris_flower_classification.train:main"
 evaluate = "iris_flower_classification.evaluate:main"
+plot = "iris_flower_classification.plot:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -19,6 +20,7 @@ dvc = "^3.53.2"
 dvclive = "^3.48.0"
 dvc-s3 = "^3.2.0"
 loguru = "^0.7.2"
+matplotlib = "^3.9.2"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.1"
