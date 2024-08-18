@@ -18,6 +18,7 @@ def plot(X, y, figure_path):
     plt.scatter(x[:, 0], x[:, 1], c=y, cmap="plasma")
     plt.xlabel("PC1")
     plt.ylabel("PC2")
+    plt.legend()
     plt.savefig(figure_path)
 
 
