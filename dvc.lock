@@ -59,3 +59,19 @@ stages:
       md5: a3f04a832b8a2559ef45bbd08545aa13.dir
       size: 585
       nfiles: 7
+  plot:
+    cmd: poetry run plot --dataset-path data/prepared/test.csv --figure-path plots/labelling_scatter_plot.png
+    deps:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 8528f75b65da9ac721d90b1534516443
+      size: 596
+    - path: iris_flower_classification/plot.py
+      hash: md5
+      md5: d35df9e66d43b30b4efa2c49b3ea1203
+      size: 754
+    outs:
+    - path: plots/labelling_scatter_plot.png
+      hash: md5
+      md5: 2763d56a641c90cb208e89fe9a5059f6
+      size: 16564
