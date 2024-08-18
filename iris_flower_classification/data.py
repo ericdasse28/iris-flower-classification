@@ -24,4 +24,4 @@ def dump_data(X: pd.Series, y: pd.Series, path: os.PathLike):
     )
     iris_data["class"] = y
 
-    iris_data.to_csv(path)
+    iris_data.to_csv(path, index=False)
