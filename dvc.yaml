@@ -15,8 +15,9 @@ stages:
     outs:
     - model.pkl
   evaluate:
-    cmd: poetry run evaluate --model-path model.pkl --dataset-path data/prepared/test.csv
+    cmd: poetry run evaluate --model-path model.pkl --dataset-path data/prepared/train.csv --stage train && poetry run evaluate --model-path model.pkl --dataset-path data/prepared/test.csv --stage test
     deps:
+    - data/prepared/train.csv
     - data/prepared/test.csv
     - iris_flower_classification/evaluate.py
     outs:
