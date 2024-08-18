@@ -3,6 +3,7 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
+from loguru import logger
 from sklearn.linear_model import LogisticRegression
 
 from iris_flower_classification.data import load_data
@@ -28,8 +29,11 @@ def _get_arguments():
 
 
 def main():
+    logger.info("Model training...")
     dataset_path, model_path = _get_arguments()
 
     X_train, y_train = load_data(dataset_path)
     model = train(X_train, y_train)
+
+    logger.info(f"Saving model to {model_path}...")
     save_model(model, model_path)

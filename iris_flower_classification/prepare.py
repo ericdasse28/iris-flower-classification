@@ -2,6 +2,7 @@ import argparse
 import os
 
 import pandas as pd
+from loguru import logger
 from sklearn.model_selection import train_test_split
 
 from iris_flower_classification.data import dump_data, load_data
@@ -31,11 +32,15 @@ def _check_is_dir(path):
 
 
 def main():
+    logger.info("Data preprocessing...")
+
     raw_dataset_path, prepared_data_dir = _get_arguments()
     _check_is_dir(prepared_data_dir)
 
     X, y = load_data(raw_dataset_path)
     X_train, X_test, y_train, y_test = prepare(X, y)
 
+    logger.info(f"Saving training data to {prepared_data_dir}/train.csv...")
     dump_data(X_train, y_train, path=f"{prepared_data_dir}/train.csv")
+    logger.info(f"Saving test data to {prepared_data_dir}/test.csv...")
     dump_data(X_test, y_test, path=f"{prepared_data_dir}/test.csv")

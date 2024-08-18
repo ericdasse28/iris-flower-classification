@@ -56,12 +56,15 @@ def _get_arguments():
 
 
 def main():
+    logger.info("Model evaluation...")
+
     args = _get_arguments()
     model = load_model(args.model_path)
     X, y = load_data(args.dataset_path)
 
     metrics = evaluate(model, X, y)
 
+    logger.info("Saving metrics to dvclive/metrics.json...")
     with Live(resume=True) as live:
         for metric in metrics:
             live.log_metric(f"{args.stage}/{metric}", metrics[metric])
