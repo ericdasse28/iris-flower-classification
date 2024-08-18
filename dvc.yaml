@@ -24,6 +24,13 @@ stages:
     - iris_flower_classification/evaluate.py
     outs:
     - dvclive
+  plot:
+    cmd: poetry run plot --dataset-path data/prepared/test.csv --figure-path plots/labelling_scatter_plot.png
+    deps:
+    - data/prepared/test.csv
+    - iris_flower_classification/plot.py
+    plots:
+    - plots/labelling_scatter_plot.png
 metrics:
 - dvclive/metrics.json
 plots:
