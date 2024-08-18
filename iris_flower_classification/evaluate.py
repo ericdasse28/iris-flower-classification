@@ -40,9 +40,11 @@ def _get_arguments():
     return args.model_path, args.dataset_path
 
 
-# def compute_evaluation_metrics(model, X, y):
-#     y_pred = model.predict(X)
-#     metrics
+def evaluate(model, X, y):
+    y_pred = model.predict(X)
+    metrics = compute_evaluation_metrics(y, y_pred)
+
+    return metrics
 
 
 def main():
@@ -50,9 +52,7 @@ def main():
     model = load_model(model_path)
     X_test, y_test = load_data(dataset_path)
 
-    y_pred = model.predict(X_test)
-
-    metrics = compute_evaluation_metrics(y_test, y_pred)
+    metrics = evaluate(model, X_test, y_test)
 
     with Live(resume=True) as live:
         for metric in metrics:
