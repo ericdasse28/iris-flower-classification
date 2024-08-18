@@ -14,19 +14,19 @@ stages:
     outs:
     - path: data/prepared/test.csv
       hash: md5
-      md5: 541041e3a41b95d5548b3782e5d93757
-      size: 677
+      md5: 8528f75b65da9ac721d90b1534516443
+      size: 596
     - path: data/prepared/train.csv
       hash: md5
-      md5: 4ef88f771e141bab2a60051b83935ec9
-      size: 2587
+      md5: ecbd5aca8e8ad87065bb04062e1309b6
+      size: 2216
   train:
     cmd: poetry run train --dataset-path data/prepared/train.csv --model-path model.pkl
     deps:
     - path: data/prepared/train.csv
       hash: md5
-      md5: 4ef88f771e141bab2a60051b83935ec9
-      size: 2587
+      md5: ecbd5aca8e8ad87065bb04062e1309b6
+      size: 2216
     - path: iris_flower_classification/train.py
       hash: md5
       md5: d9feb042e3806ad933f83a997bb066d8
@@ -34,8 +34,8 @@ stages:
     outs:
     - path: model.pkl
       hash: md5
-      md5: 4f2ba77888d955c7d002d4f8ebefd641
-      size: 1023
+      md5: b0965f85e2a808f93f6a812e45dd2d83
+      size: 991
   evaluate:
     cmd: poetry run evaluate --model-path model.pkl --dataset-path data/prepared/train.csv
       --stage train && poetry run evaluate --model-path model.pkl --dataset-path data/prepared/test.csv
@@ -43,12 +43,12 @@ stages:
     deps:
     - path: data/prepared/test.csv
       hash: md5
-      md5: 541041e3a41b95d5548b3782e5d93757
-      size: 677
+      md5: 8528f75b65da9ac721d90b1534516443
+      size: 596
     - path: data/prepared/train.csv
       hash: md5
-      md5: 4ef88f771e141bab2a60051b83935ec9
-      size: 2587
+      md5: ecbd5aca8e8ad87065bb04062e1309b6
+      size: 2216
     - path: iris_flower_classification/evaluate.py
       hash: md5
       md5: a72251a72ec7e5ea353b045f7d5662af
