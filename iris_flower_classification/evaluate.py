@@ -5,7 +5,13 @@ from pathlib import Path
 
 import joblib
 import pandas as pd
-from sklearn.metrics import accuracy_score, precision_score, recall_score
+from loguru import logger
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    precision_score,
+    recall_score,
+)
 
 from dvclive import Live
 from iris_flower_classification.data import load_data
@@ -34,6 +40,7 @@ def compute_evaluation_metrics(y_test: pd.Series, y_pred: pd.Series) -> dict:
 def evaluate(model, X, y):
     y_pred = model.predict(X)
     metrics = compute_evaluation_metrics(y, y_pred)
+    logger.info(classification_report(y, y_pred))
 
     return metrics
 
