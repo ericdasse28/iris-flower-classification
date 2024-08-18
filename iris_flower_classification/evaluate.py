@@ -31,15 +31,6 @@ def compute_evaluation_metrics(y_test: pd.Series, y_pred: pd.Series) -> dict:
     }
 
 
-def _get_arguments():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--model-path")
-    parser.add_argument("--dataset-path")
-    args = parser.parse_args()
-
-    return args.model_path, args.dataset_path
-
-
 def evaluate(model, X, y):
     y_pred = model.predict(X)
     metrics = compute_evaluation_metrics(y, y_pred)
@@ -47,13 +38,23 @@ def evaluate(model, X, y):
     return metrics
 
 
-def main():
-    model_path, dataset_path = _get_arguments()
-    model = load_model(model_path)
-    X_test, y_test = load_data(dataset_path)
+def _get_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model-path")
+    parser.add_argument("--dataset-path")
+    parser.add_argument("--stage")
+    args = parser.parse_args()
 
-    metrics = evaluate(model, X_test, y_test)
+    return args
+
+
+def main():
+    args = _get_arguments()
+    model = load_model(args.model_path)
+    X, y = load_data(args.dataset_path)
+
+    metrics = evaluate(model, X, y)
 
     with Live(resume=True) as live:
         for metric in metrics:
-            live.log_metric(f"test/{metric}", metrics[metric])
+            live.log_metric(f"{args.stage}/{metric}", metrics[metric])
