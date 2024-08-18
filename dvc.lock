@@ -45,8 +45,8 @@ stages:
       size: 677
     - path: iris_flower_classification/evaluate.py
       hash: md5
-      md5: 2570cb1d8a09986bc6f38735fe794b0e
-      size: 1335
+      md5: 79d1c2ed3a7b071d046bf2379056d9cb
+      size: 1455
     outs:
     - path: dvclive
       hash: md5
